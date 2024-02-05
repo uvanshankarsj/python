@@ -21,3 +21,23 @@ while mat:
         mat[i].pop(0)
     
     print(res)
+
+
+
+nums = [3,1,4,2]
+p = 6
+ansli=0
+def ans(nums):
+    global ansli
+    if nums:
+        total=sum(nums)
+        if total%p!=0 and total>p:
+            for i in range(len(nums)):
+                ans(nums[:i]+nums[i+1:])
+        else:
+            if total%p==0:
+                ansli=max(len(nums),ansli)
+                exit
+                
+ans(nums)
+print(len(nums)-ansli)
